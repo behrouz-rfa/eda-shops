@@ -13,9 +13,9 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 
-	"eda-in-golang/internal/config"
-	"eda-in-golang/internal/monolith"
-	"eda-in-golang/internal/waiter"
+	"eda-shops/internal/config"
+	"eda-shops/internal/monolith"
+	"eda-shops/internal/waiter"
 )
 
 type app struct {

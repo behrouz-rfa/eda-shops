@@ -11,19 +11,14 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"eda-in-golang/baskets"
-	"eda-in-golang/customers"
-	"eda-in-golang/depot"
-	"eda-in-golang/internal/config"
-	"eda-in-golang/internal/logger"
-	"eda-in-golang/internal/monolith"
-	"eda-in-golang/internal/rpc"
-	"eda-in-golang/internal/waiter"
-	"eda-in-golang/internal/web"
-	"eda-in-golang/notifications"
-	"eda-in-golang/ordering"
-	"eda-in-golang/payments"
-	"eda-in-golang/stores"
+	"eda-shops/internal/config"
+	"eda-shops/internal/logger"
+	"eda-shops/internal/monolith"
+	"eda-shops/internal/rpc"
+	"eda-shops/internal/waiter"
+	"eda-shops/internal/web"
+
+	"eda-shops/stores"
 )
 
 func main() {
@@ -64,12 +59,7 @@ func run() (err error) {
 
 	// init modules
 	m.modules = []monolith.Module{
-		&baskets.Module{},
-		&customers.Module{},
-		&depot.Module{},
-		&notifications.Module{},
-		&ordering.Module{},
-		&payments.Module{},
+
 		&stores.Module{},
 	}
 

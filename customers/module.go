@@ -8,17 +8,22 @@ import (
 	"eda-shops/customers/internal/logging"
 	"eda-shops/customers/internal/postgres"
 	"eda-shops/customers/internal/rest"
+	"eda-shops/internal/ddd"
 	"eda-shops/internal/monolith"
 )
 
 type Module struct{}
 
 func (m Module) Startup(ctx context.Context, mono monolith.Monolith) error {
+	// setup Driven adapters
+	domainDispatcher := ddd.NewEventDispatcher()
 	customers := postgres.NewCustomerRepository("customers.customers", mono.DB())
 
-	var app application.App
-	app = application.New(customers)
-	app = logging.LogApplicationAccess(app, mono.Logger())
+	// setup application
+	app := logging.LogApplicationAccess(
+		application.New(customers, domainDispatcher),
+		mono.Logger(),
+	)
 
 	if err := grpc.RegisterServer(app, mono.RPC()); err != nil {
 		return err

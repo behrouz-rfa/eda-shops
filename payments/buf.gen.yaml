@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: eda-shops/ordering/orderingpb
+    default: eda-shops/payments/paymentspb
     except:
       - buf.build/googleapis/googleapis
 plugins:

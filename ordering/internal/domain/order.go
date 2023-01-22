@@ -1,6 +1,8 @@
 package domain
 
-import "github.com/stackus/errors"
+import (
+	"github.com/stackus/errors"
+)
 
 var (
 	ErrOrderHasNoItems         = errors.Wrap(errors.ErrBadRequest, "the order has no items")

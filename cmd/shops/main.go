@@ -2,6 +2,12 @@ package main
 
 import (
 	"database/sql"
+	"eda-shops/baskets"
+	"eda-shops/customers"
+	"eda-shops/depot"
+	"eda-shops/notifications"
+	"eda-shops/ordering"
+	"eda-shops/payments"
 	"fmt"
 	"net/http"
 	"os"
@@ -17,7 +23,6 @@ import (
 	"eda-shops/internal/rpc"
 	"eda-shops/internal/waiter"
 	"eda-shops/internal/web"
-
 	"eda-shops/stores"
 )
 
@@ -59,7 +64,12 @@ func run() (err error) {
 
 	// init modules
 	m.modules = []monolith.Module{
-
+		&baskets.Module{},
+		&customers.Module{},
+		&depot.Module{},
+		&notifications.Module{},
+		&ordering.Module{},
+		&payments.Module{},
 		&stores.Module{},
 	}
 
@@ -70,8 +80,8 @@ func run() (err error) {
 	// Mount general web resources
 	m.mux.Mount("/", http.FileServer(http.FS(web.WebUI)))
 
-	fmt.Println("started shops application")
-	defer fmt.Println("stopped shops application")
+	fmt.Println("started mallbots application")
+	defer fmt.Println("stopped mallbots application")
 
 	m.waiter.Add(
 		m.waitForWeb,

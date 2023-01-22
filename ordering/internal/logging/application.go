@@ -2,11 +2,13 @@ package logging
 
 import (
 	"context"
+
+	"github.com/rs/zerolog"
+
 	"eda-shops/ordering/internal/application"
 	"eda-shops/ordering/internal/application/commands"
 	"eda-shops/ordering/internal/application/queries"
 	"eda-shops/ordering/internal/domain"
-	"github.com/rs/zerolog"
 )
 
 type Application struct {

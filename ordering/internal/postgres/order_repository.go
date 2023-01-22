@@ -3,10 +3,12 @@ package postgres
 import (
 	"context"
 	"database/sql"
-	"eda-shops/ordering/internal/domain"
 	"encoding/json"
 	"fmt"
+
 	"github.com/stackus/errors"
+
+	"eda-shops/ordering/internal/domain"
 )
 
 type OrderRepository struct {

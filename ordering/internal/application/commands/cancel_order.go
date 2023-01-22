@@ -2,6 +2,7 @@ package commands
 
 import (
 	"context"
+
 	"eda-shops/ordering/internal/domain"
 )
 
@@ -42,6 +43,6 @@ func (h CancelOrderHandler) CancelOrder(ctx context.Context, cmd CancelOrder) er
 	if err = h.notifications.NotifyOrderCanceled(ctx, order.ID, order.CustomerID); err != nil {
 		return err
 	}
-	return h.orders.Update(ctx, order)
 
+	return h.orders.Update(ctx, order)
 }

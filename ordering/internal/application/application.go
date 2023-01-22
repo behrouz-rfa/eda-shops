@@ -2,6 +2,7 @@ package application
 
 import (
 	"context"
+
 	"eda-shops/ordering/internal/application/commands"
 	"eda-shops/ordering/internal/application/queries"
 	"eda-shops/ordering/internal/domain"

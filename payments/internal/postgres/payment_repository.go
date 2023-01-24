@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"eda-shops/payments/internal/application"
-	"eda-shops/payments/internal/models"
+	"eda-in-golang/payments/internal/application"
+	"eda-in-golang/payments/internal/models"
 )
 
 type PaymentRepository struct {

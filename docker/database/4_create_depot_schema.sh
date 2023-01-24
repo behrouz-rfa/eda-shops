@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "mallbots" <<-EOSQL
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "shops" <<-EOSQL
   CREATE SCHEMA depot;
 
   CREATE TABLE depot.shopping_lists
@@ -22,6 +22,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "mallbots" <<-EOSQL
   CREATE TRIGGER created_at_shopping_lists_trgr BEFORE UPDATE ON depot.shopping_lists FOR EACH ROW EXECUTE PROCEDURE created_at_trigger();
   CREATE TRIGGER updated_at_shopping_lists_trgr BEFORE UPDATE ON depot.shopping_lists FOR EACH ROW EXECUTE PROCEDURE updated_at_trigger();
 
-  GRANT USAGE ON SCHEMA depot TO mallbots_user;
-  GRANT INSERT, UPDATE, DELETE, SELECT ON ALL TABLES IN SCHEMA depot TO mallbots_user;
+  GRANT USAGE ON SCHEMA depot TO shops_user;
+  GRANT INSERT, UPDATE, DELETE, SELECT ON ALL TABLES IN SCHEMA depot TO shops_user;
 EOSQL

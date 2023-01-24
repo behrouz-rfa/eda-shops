@@ -80,8 +80,8 @@ func run() (err error) {
 	// Mount general web resources
 	m.mux.Mount("/", http.FileServer(http.FS(web.WebUI)))
 
-	fmt.Println("started mallbots application")
-	defer fmt.Println("stopped mallbots application")
+	fmt.Println("started shops application")
+	defer fmt.Println("stopped shops application")
 
 	m.waiter.Add(
 		m.waitForWeb,

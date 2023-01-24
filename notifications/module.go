@@ -3,10 +3,10 @@ package notifications
 import (
 	"context"
 
-	"eda-in-golang/internal/monolith"
-	"eda-in-golang/notifications/internal/application"
-	"eda-in-golang/notifications/internal/grpc"
-	"eda-in-golang/notifications/internal/logging"
+	"eda-shops/internal/monolith"
+	"eda-shops/notifications/internal/application"
+	"eda-shops/notifications/internal/grpc"
+	"eda-shops/notifications/internal/logging"
 )
 
 type Module struct{}

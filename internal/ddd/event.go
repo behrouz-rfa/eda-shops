@@ -11,7 +11,7 @@ type (
 		IDer
 		EventName() string
 		Payload() EventPayload
-		MetaData() Metadata
+		Metadata() Metadata
 		OccurredAt() time.Time
 	}
 	event struct {
@@ -40,22 +40,7 @@ func newEvent(name string, payload EventPayload, options ...EventOption) event {
 
 var _ Event = (*event)(nil)
 
-func (e event) EventName() string {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (e event) Payload() EventPayload {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (e event) MetaData() Metadata {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (e event) OccurredAt() time.Time {
-	//TODO implement me
-	panic("implement me")
-}
+func (e event) EventName() string     { return e.name }
+func (e event) Payload() EventPayload { return e.payload }
+func (e event) Metadata() Metadata    { return e.metadata }
+func (e event) OccurredAt() time.Time { return e.occurredAt }

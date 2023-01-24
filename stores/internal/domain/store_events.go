@@ -1,19 +1,28 @@
 package domain
 
+const (
+	StoreCreatedEvent               = "stores.StoreCreated"
+	StoreParticipationEnabledEvent  = "stores.StoreParticipationEnabled"
+	StoreParticipationDisabledEvent = "stores.StoreParticipationDisabled"
+	StoreRebrandedEvent             = "stores.StoreRebranded"
+)
+
 type StoreCreated struct {
-	Store *Store
+	Name     string
+	Location string
 }
+
+// Key implements registry.Registerable
+func (StoreCreated) Key() string { return StoreCreatedEvent }
 
 func (StoreCreated) EventName() string { return "stores.StoreCreated" }
 
-type StoreParticipationEnabled struct {
-	Store *Store
+type StoreParticipationToggled struct {
+	Participating bool
+}
+type StoreRebranded struct {
+	Name string
 }
 
-func (StoreParticipationEnabled) EventName() string { return "stores.StoreParticipationEnabled" }
-
-type StoreParticipationDisabled struct {
-	Store *Store
-}
-
-func (StoreParticipationDisabled) EventName() string { return "stores.StoreParticipationDisabled" }
+// Key implements registry.Registerable
+func (StoreRebranded) Key() string { return StoreRebrandedEvent }

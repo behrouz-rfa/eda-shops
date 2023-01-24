@@ -6,7 +6,7 @@ import (
 )
 
 type EventApplier interface {
-	ApplyEvent(event ddd.Event) error
+	ApplyEvent(ddd.Event) error
 }
 
 type EventCommitter interface {

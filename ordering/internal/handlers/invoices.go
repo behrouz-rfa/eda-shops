@@ -2,10 +2,9 @@ package handlers
 
 import (
 	"eda-shops/internal/ddd"
-	"eda-shops/ordering/internal/application"
 	"eda-shops/ordering/internal/domain"
 )
 
-func RegisterInvoiceHandlers(invoiceHandlers application.DomainEventHandlers, domainSubscriber ddd.EventSubscriber) {
-	domainSubscriber.Subscribe(domain.OrderReadied{}, invoiceHandlers.OnOrderReadied)
+func RegisterInvoiceHandlers(invoiceHandlers ddd.EventHandler[ddd.AggregateEvent], domainSubscriber ddd.EventSubscriber[ddd.AggregateEvent]) {
+	domainSubscriber.Subscribe(domain.OrderReadiedEvent, invoiceHandlers)
 }
